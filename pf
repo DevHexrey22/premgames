@@ -1,5 +1,7 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
+local EspColor = Color3.fromRGB(255, 128, 128)
+
 OrionLib:MakeNotification({
 	Name = "RoHub Premium ",
 	Content = "Phantom Forces successfully loaded!",
@@ -142,6 +144,25 @@ Tab3:AddButton({
 })
 
 
+Tab3:AddToggle({
+	Name = "Fly",
+	Default = false,
+	Callback = function(state)
+         if state then
+
+loadstring(game:HttpGet("https://pastebin.com/raw/MNf5xK7b", true))()
+
+	end
+  	end      
+
+
+})
+
+
+
+
+
+
 Tab3:AddButton({
 	Name = "Rejoin on votekick",
 		Callback = function()
@@ -156,11 +177,65 @@ Tab2:AddToggle({
 	Name = "ESP",
 	Default = false,
 	Callback = function(state)
-if state then 
-       loadstring(game:HttpGet("https://pastebin.com/raw/nF4pQUn6", true))()
-       end
-       end
+         if state then
+        LineList = {}
+        espLoop = rs.RenderStepped:Connect(function()
+            for i,v in pairs(LineList) do
+                if v then
+                    v:Remove()
+                end
+            end
+            
+            local team = getTeam()
 
+            LineList = {}
+            if game.Workspace.Players:FindFirstChild(team) then
+                for i,v in pairs(game.Workspace.Players:FindFirstChild(team):GetChildren()) do
+                    local pos = v.PrimaryPart.Position
+                    local ScreenSpacePos, IsOnScreen = game.Workspace.CurrentCamera:WorldToViewportPoint(pos)
+                    
+                    a = game.Workspace.CurrentCamera:WorldToViewportPoint(v.Torso.CFrame:PointToWorldSpace(Vector3.new(width/2, height/2, 0)))
+                    b = game.Workspace.CurrentCamera:WorldToViewportPoint(v.Torso.CFrame:PointToWorldSpace(Vector3.new(-width/2, height/2, 0)))
+                    c = game.Workspace.CurrentCamera:WorldToViewportPoint(v.Torso.CFrame:PointToWorldSpace(Vector3.new(-width/2, -height/2, 0)))
+                    d = game.Workspace.CurrentCamera:WorldToViewportPoint(v.Torso.CFrame:PointToWorldSpace(Vector3.new(width/2, -height/2, 0)))
+                    
+                    a = Vector2.new(a.X, a.Y)
+                    b = Vector2.new(b.X, b.Y)
+                    c = Vector2.new(c.X, c.Y)
+                    d = Vector2.new(d.X, d.Y)
+                    
+                    if IsOnScreen then
+                        local Line = Drawing.new("Quad")
+                        Line.Visible = true
+                        Line.PointA = a
+                        Line.PointB = b
+                        Line.PointC = c
+                        Line.PointD = d
+                        Line.Color = EspColor
+                        Line.Thickness = 2
+                        Line.Transparency = 1
+                        
+                        LineList[#LineList+1] = Line
+                    end
+                end
+            end
+        end)
+    else
+        espLoop:Disconnect()
+        for i,v in pairs(LineList) do
+            v:Remove()
+        end
+        LineList = {}
+         end
+end
+})
+
+Tab2:AddColorpicker({
+	Name = "ESP color",
+	Default = Color3.fromRGB(255, 0, 0),
+	Callback = function(Value)
+		EspColor = color
+	end	  
 })
 
 Tab2:AddButton({
