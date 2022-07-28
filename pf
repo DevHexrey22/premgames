@@ -145,7 +145,7 @@ Tab3:AddButton({
 
 
 Tab3:AddToggle({
-	Name = "Fly",
+	Name = "Fly(f)",
 	Default = false,
 	Callback = function(state)
          if state then
@@ -157,6 +157,17 @@ loadstring(game:HttpGet("https://pastebin.com/raw/MNf5xK7b", true))()
 
 
 })
+
+Tab3:AddButton({
+	Name = "Unlock all (wait a minute for it to load",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/VoidMasterX/Releases/main/PF_UnlockAll.lua"))();
+		end
+})
+
+
+
+
 
 
 
