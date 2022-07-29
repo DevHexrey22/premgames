@@ -1,0 +1,95 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local EspColor = Color3.fromRGB(255, 128, 128)
+
+OrionLib:MakeNotification({
+	Name = "RoHub Premium ",
+	Content = "Red Box 2 successfully loaded!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+local Window = OrionLib:MakeWindow({Name = "Rohub|Red Box", HidePremium =false, SaveConfig = false, IntroEnabled = false, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+	Name = "Aim",
+	Icon = "rbxassetid://9947946243",
+	PremiumOnly = true
+})
+
+local Tab2 = Window:MakeTab({
+	Name = "Visuals",
+	Icon = "rbxassetid://5555718565",
+	PremiumOnly = true
+})
+
+local Tab3 = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://5555718565",
+	PremiumOnly = true
+})
+
+local Tab4 = Window:MakeTab({
+	Name = "UI",
+	Icon = "rbxassetid://5480743826",
+	PremiumOnly = true
+})
+
+Tab:AddButton({
+	Name = "Hitbox extender",
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kitzoon/Roblox-Scripts/main/hitboxextender.lua"))()
+})
+
+Tab:AddButton({
+	Name = "No recoil/spead",
+		Callback = function()
+		  getgenv().Toggle = true
+getgenv().ValueCheck = true
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/yesok3877/Miscellaneous/master/Universal-No-Recoil'),true))()
+  	end      
+
+
+})
+
+
+
+
+Tab3:AddButton({
+	Name = "INF jump",
+		Callback = function()
+		   loadstring(game:HttpGet("https://raw.githubusercontent.com/DevHexry/INF/main/jump", true))()
+  	end      
+
+
+})
+
+
+Tab3:AddButton({
+	Name = "ESP",
+		 loadstring(game:HttpGet("https://raw.githubusercontent.com/DevHexry/SKELEESP/main/SPOOKY", true))()
+})
+
+
+
+Tab2:AddButton({
+	Name = "Tacers(BROKEN)",
+		Callback = function()
+		    loadstring(game:HttpGet("https://raw.githubusercontent.com/DevHexry/trace/main/lua", true))()
+  	end      
+
+
+})
+
+
+
+
+
+Tab4:AddButton({
+	Name = "DestroyGui",
+	Callback = function()
+      		local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+            OrionLib:Destroy()
+  	end    
+})
+
+OrionLib:Init()
