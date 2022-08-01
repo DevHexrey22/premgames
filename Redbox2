@@ -81,6 +81,20 @@ Tab2:AddButton({
 })
 
 
+Tab4:AddSlider({
+	Name = "Walk speed",
+	Min = 16,
+	Max = 500,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "speed",
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+	end    
+})
+
+
 
 
 
