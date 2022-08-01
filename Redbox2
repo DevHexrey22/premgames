@@ -73,6 +73,16 @@ Tab2:AddButton({
 
 })
 
+Tab2:AddButton({
+	Name = "Player Radar(Draggable)",
+		Callback = function()
+		    loadstring(game:HttpGet("https://raw.githubusercontent.com/DevHexrey22/r/main/rar", true))()
+  	end      
+
+
+})
+
+
 
 
 
