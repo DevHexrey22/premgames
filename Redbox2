@@ -57,11 +57,22 @@ loadstring(game:HttpGet(('https://raw.githubusercontent.com/yesok3877/Miscellane
 Tab:AddButton({
 	Name = "For kill all, make sure you hold the Link Sword when you click it",
 		Callback = function()
+		 
+  	end      
+
+
+})
+
+
+Tab:AddButton({
+	Name = "For kill all, make sure you hold the Link Sword when you click it",
+		Callback = function()
 		   loadstring(game:HttpGet("https://raw.githubusercontent.com/DevHexrey22/KA/main/ki", true))()
   	end      
 
 
 })
+
 
 
 
