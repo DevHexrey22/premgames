@@ -55,7 +55,7 @@ loadstring(game:HttpGet(('https://raw.githubusercontent.com/yesok3877/Miscellane
 
 
 Tab:AddButton({
-	Name = "For kill all, make sure you hold the Link Sword when you click it",
+	Name = "For kill all, make sure you hold the Link Sword when you click",
 		Callback = function()
 		 
   	end      
@@ -65,13 +65,57 @@ Tab:AddButton({
 
 
 Tab:AddButton({
-	Name = "For kill all, make sure you hold the Link Sword when you click it",
+	Name = "Kill all",
 		Callback = function()
 		   loadstring(game:HttpGet("https://raw.githubusercontent.com/DevHexrey22/KA/main/ki", true))()
   	end      
 
 
 })
+
+
+Tab:AddButton({
+	Name = "Equip gun, then press gun mods",
+		Callback = function()
+		   
+  	end      
+
+
+})
+
+Tab:AddButton({
+	Name = "Gun mods",
+		Callback = function()
+		   local Tool = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Tool")
+
+local m = require(Tool.toolSettings)
+
+m.firingRecoilEnabled = false
+m.firingBulletWidth = 10
+m.firingProjectileMaxDistance = 10000
+m.firingProjectileVelocity = 10000
+m.firingRPM = 1000
+m.firingFiremodeSwitchable = true
+m.firingSpread = 0
+m.equipTime = 0
+m.firingTripChance = 100
+m.firingPumpEnabled = false
+m.firingFiremodes = {
+	[1] = "Automatic",
+	[2] = "Semi",
+}
+
+game:GetService("ReplicatedStorage").Assets.Remotes.syncAmmo:FireServer(math.huge, math.huge, Tool)
+
+game:GetService("Players").LocalPlayer.Character.Humanoid:UnequipTools()
+game:GetService("Players").LocalPlayer.Character.Humanoid:EquipTool(Tool)
+  	end      
+
+
+})
+
+
+
 
 
 
